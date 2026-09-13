@@ -32,10 +32,6 @@ RUN apt-get update && apt-get install -y \
 # Set up working directory
 WORKDIR /app
 
-# Set environment for Qt and X11
-ENV DISPLAY=host.docker.internal:0.0
-ENV QT_X11_NO_MITSHM=1
-
 ARG USERNAME=student
 ARG USER_UID=1000
 ARG USER_GID=1000
