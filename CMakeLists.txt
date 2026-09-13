@@ -14,4 +14,5 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets PrintSupport)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/QCustomPlot.cmake)
 
+add_subdirectory(lib)
 add_subdirectory(gui)
