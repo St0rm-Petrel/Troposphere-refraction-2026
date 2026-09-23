@@ -1,0 +1,19 @@
+services:
+  student-env:
+    build: .
+    image: qt-project-enviroment-image
+    container_name: qt-project-enviroment
+    volumes:
+      # Mount the current directory (where this file lives) into /app
+      - .:/app
+      # - /tmp/.X11-unix:/tmp/.X11-unix may be required for Linux
+    working_dir: /app
+    # Keep the container running
+    tty: true
+    stdin_open: true
+    environment:
+      - DISPLAY=host.docker.internal:0.0
+      # - DISPLAY=${DISPLAY} may fix issues for Linux
+      - QT_X11_NO_MITSHM=1
+    # On Linux, you may need to allow X11 forwarding:
+    # network_mode: host   # uncomment only if you know what you are doing
