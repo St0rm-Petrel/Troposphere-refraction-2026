@@ -87,7 +87,7 @@ public:
     RefractionModelK1(double _h_a, double _h_s, double _R)
         : RefractionModelYesCurvature(1.0, _h_a, _h_s, _R) {}
 };
-
+//comment
 int main() {
     //RefractionModelK43 m43(200.0, 200.0, 10.770);
     //RefractionModelK1  m1 (200.0, 200.0, 10.770);
