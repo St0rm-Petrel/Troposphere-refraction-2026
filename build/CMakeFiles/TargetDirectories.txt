@@ -1,0 +1,3 @@
+C:/Мои документы/Учёба_2027/Инжпрак/build/CMakeFiles/refraction_app.dir
+C:/Мои документы/Учёба_2027/Инжпрак/build/CMakeFiles/ALL_BUILD.dir
+C:/Мои документы/Учёба_2027/Инжпрак/build/CMakeFiles/ZERO_CHECK.dir
