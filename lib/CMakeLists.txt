@@ -12,7 +12,8 @@ set(PROJECT_SOURCES
         gost_atm_model.h
         linear_interpolation.cpp
         linear_interpolation.h
-
+        refraction_model.h
+        refraction_model.cpp
 )
 
 add_library(lib STATIC ${PROJECT_SOURCES})
