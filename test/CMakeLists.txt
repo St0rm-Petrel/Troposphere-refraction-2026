@@ -4,6 +4,7 @@ set(CMAKE_CXX_FLAGS "-DTEST_PLOTS")
 
 set(PROJECT_SOURCES
         water_vapour_test.cpp
+        refraction_model_test.cpp
         main.cpp
 )
 
