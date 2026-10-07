@@ -8,6 +8,9 @@ set(PROJECT_SOURCES
         exp_atm_model.h
         seg_atm_model.cpp
         seg_atm_model.h
+        gost_atm_model.cpp
+        gost_atm_model.h
+
 )
 
 add_library(lib STATIC ${PROJECT_SOURCES})
