@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_CASE(h_and_hs_are_equal) {
 }
 
 BOOST_AUTO_TEST_CASE(Nh_hs_plus_1000m) {
-  BOOST_TEST(N_h(2000, 300, 1000 + 1e-6) == N_h(2000, 300, 1000 - 1e-6),
+  BOOST_TEST(N_h(2000 + 1e-6, 300, 1000) == N_h(2000 - 1e-6, 300, 1000),
              tt::tolerance(1e-6));
 }
 
