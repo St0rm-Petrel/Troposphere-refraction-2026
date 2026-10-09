@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_3">
+   <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <widget class="QSplitter" name="splitter_5">
       <property name="orientation">
@@ -65,21 +65,21 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </widget>
       <widget class="QToolBox" name="toolBox">
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="direct">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>635</width>
-          <height>485</height>
+          <width>609</width>
+          <height>471</height>
          </rect>
         </property>
         <attribute name="label">
          <string>Прямая задача</string>
         </attribute>
-        <layout class="QGridLayout" name="gridLayout_2">
+        <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
           <widget class="QSplitter" name="splitter_3">
            <property name="orientation">
@@ -89,7 +89,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
-            <widget class="QWidget" name="">
+            <widget class="QWidget" name="layoutWidget">
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
                <widget class="QLabel" name="label_8">
@@ -105,6 +105,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <string>Единая модель</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>Модель с численным интегрированием</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item>
@@ -112,7 +117,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="">
+            <widget class="QWidget" name="layoutWidget">
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
                <widget class="QLabel" name="label">
@@ -151,12 +156,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
              </layout>
             </widget>
            </widget>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
               <widget class="QLabel" name="label_13">
                <property name="text">
                 <string>Высота РЛС, м</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="Line" name="line">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
                </property>
               </widget>
              </item>
@@ -245,7 +257,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>635</width>
+          <width>592</width>
           <height>485</height>
          </rect>
         </property>
@@ -258,7 +270,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
               <widget class="QLabel" name="label_20">
@@ -281,7 +293,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
               <widget class="QLabel" name="label_2">
