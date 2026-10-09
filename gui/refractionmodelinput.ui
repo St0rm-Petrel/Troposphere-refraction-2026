@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>RefractionModelImput</class>
+ <class>RefractionModelInput</class>
  <widget class="QWidget" name="RefractionModelImput">
   <property name="geometry">
    <rect>
