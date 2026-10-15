@@ -12,9 +12,12 @@ namespace utf = boost::unit_test;
 
 BOOST_AUTO_TEST_SUITE(test_exp_model)
 
-ExpAtmModel model;
+class ExpAtmFixture {
+public:
+  ExpAtmModel model;
+};
 
-BOOST_AUTO_TEST_CASE(h_and_hs_are_equal) {
+BOOST_FIXTURE_TEST_CASE(h_and_hs_are_equal, ExpAtmFixture) {
   BOOST_TEST(model.N_h(10, 300, 10) == 300);
 }
 
