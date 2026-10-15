@@ -23,14 +23,14 @@ protected:
     double k = 1.0;   // значение по умолчанию, чтобы не было мусора
 public:
     RefractionModelWithCurvature() = default;   // конструктор без k
-    double K();
+    virtual double K();
     CalculatedResult calculate(double h_a, double h_s, double R) override;
 };
 
 class RefractionModelK43 : public RefractionModelWithCurvature {
 public:
     RefractionModelK43();
-    double K();
+    double K() override;
 };
 
 
@@ -38,7 +38,7 @@ public:
 class RefractionModelK1 : public RefractionModelWithCurvature {
 public:
     RefractionModelK1();
-    double K();
+    double K() override;
 };
 
 #endif  // REFRACTION_MODEL_H
