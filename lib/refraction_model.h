@@ -23,19 +23,22 @@ protected:
     double k = 1.0;   // значение по умолчанию, чтобы не было мусора
 public:
     RefractionModelWithCurvature() = default;   // конструктор без k
-    void setK(double k);                        // ← вот он, метод
-    double getK() const { return k; }           // полезно для проверок
+    double K();
     CalculatedResult calculate(double h_a, double h_s, double R) override;
 };
 
 class RefractionModelK43 : public RefractionModelWithCurvature {
 public:
     RefractionModelK43();
+    double K();
 };
+
+
 
 class RefractionModelK1 : public RefractionModelWithCurvature {
 public:
     RefractionModelK1();
+    double K();
 };
 
 #endif  // REFRACTION_MODEL_H
