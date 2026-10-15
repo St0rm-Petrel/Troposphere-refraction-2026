@@ -13,11 +13,20 @@ CalculatedResult RefractionModelWithoutCurvature::calculate(double h_a, double h
     return answer;
 }
 
-void RefractionModelWithCurvature::setK(double k) {
-    this->k = k;
+double RefractionModelWithCurvature::K() {
+    return this->k;
+}
+
+double RefractionModelK43::K() {
+    return 4.0 / 3.0;
+}
+
+double RefractionModelK1::K() {
+    return 1.0;
 }
 
 CalculatedResult RefractionModelWithCurvature::calculate(double h_a, double h_s, double R) {
+    k = K();
     double sin_psi_d = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_a)))
                      + R / (2.0 * (k * 6371.0 + h_a));
     double sin_psi_g = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_s)))
@@ -31,5 +40,5 @@ CalculatedResult RefractionModelWithCurvature::calculate(double h_a, double h_s,
     return answer;
 }
 
-RefractionModelK43::RefractionModelK43() { setK(4.0 / 3.0); }
-RefractionModelK1::RefractionModelK1()   { setK(1.0);        }
+RefractionModelK43::RefractionModelK43() {}
+RefractionModelK1::RefractionModelK1()   {}
