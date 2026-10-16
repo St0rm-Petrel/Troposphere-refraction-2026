@@ -7,6 +7,7 @@ set(PROJECT_SOURCES
         main.cpp
         seg_model_test.cpp
         exp_model_test.cpp
+        linear_interpolation_test.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
