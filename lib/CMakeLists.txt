@@ -10,6 +10,8 @@ set(PROJECT_SOURCES
         seg_atm_model.h
         gost_atm_model.cpp
         gost_atm_model.h
+        linear_interpolation.cpp
+        linear_interpolation.h
 
 )
 
