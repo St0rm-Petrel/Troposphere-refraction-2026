@@ -7,6 +7,23 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        atmosphereinput.h
+        atmosphereinput.cpp 
+        atmosphereinput.ui 
+        geometryinput.h
+        geometryinput.cpp 
+        geometryinput.ui 
+        refractioninput.h
+        refractioninput.cpp 
+        refractioninput.ui
+        refractionselection.ui
+        refractionselection.h 
+        refractionselection.cpp 
+        atmosphereselection.cpp 
+        atmosphereselection.h 
+        atmosphereselection.ui
+
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -31,6 +48,8 @@ else()
         )
     endif()
 endif()
+
+target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
     gui
