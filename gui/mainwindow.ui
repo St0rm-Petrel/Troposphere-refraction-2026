@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
-     <widget class="QSplitter" name="splitter_5">
+     <widget class="QSplitter" name="splitter_2">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -72,175 +72,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>609</width>
-          <height>471</height>
+          <width>280</width>
+          <height>485</height>
          </rect>
         </property>
         <attribute name="label">
          <string>Прямая задача</string>
         </attribute>
-        <layout class="QGridLayout" name="gridLayout_3">
+        <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0">
-          <widget class="QSplitter" name="splitter_3">
+          <widget class="QSplitter" name="splitter">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <widget class="QSplitter" name="splitter_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <widget class="QWidget" name="layoutWidget">
-             <layout class="QVBoxLayout" name="verticalLayout">
-              <item>
-               <widget class="QLabel" name="label_8">
-                <property name="text">
-                 <string>Выбор модели атмосферы</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QComboBox" name="dir_atm_combo">
-                <item>
-                 <property name="text">
-                  <string>Единая модель</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Модель с численным интегрированием</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="dir_atm_imput" native="true"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="layoutWidget">
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <widget class="QLabel" name="label">
-                <property name="text">
-                 <string>Выбор модели преломления</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QComboBox" name="dir_refr_combo">
-                <item>
-                 <property name="text">
-                  <string>Без преломления</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Модель эффективного радиуса «4/3»</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Модель среднего значения k</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Модель среднего значения радиуса кривизны</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="dir_refr_imput" native="true"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
            <widget class="QWidget" name="layoutWidget">
-            <layout class="QVBoxLayout" name="verticalLayout_5">
+            <layout class="QVBoxLayout" name="verticalLayout">
              <item>
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>Высота РЛС, м</string>
-               </property>
-              </widget>
+              <widget class="AtmosphereSelection" name="dir_atm_sel" native="true"/>
              </item>
              <item>
-              <widget class="Line" name="line">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-              </widget>
+              <widget class="AtmosphereInput" name="dir_atm_input" native="true"/>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="dir_hs">
-               <property name="minimum">
-                <double>-10000.000000000000000</double>
-               </property>
-               <property name="maximum">
-                <double>10000.000000000000000</double>
-               </property>
-              </widget>
+              <widget class="RefractionSelection" name="dir_refr_sel" native="true"/>
              </item>
              <item>
-              <spacer name="verticalSpacer">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>18</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_12">
-               <property name="text">
-                <string>Высота цели, м</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QDoubleSpinBox" name="dir_ha">
-               <property name="minimum">
-                <double>-10000.000000000000000</double>
-               </property>
-               <property name="maximum">
-                <double>10000.000000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_3">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>18</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>Прямолинейная наклонная дальность, м</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QDoubleSpinBox" name="dir_r">
-               <property name="maximum">
-                <double>10000.000000000000000</double>
-               </property>
-              </widget>
+              <widget class="RefractionInput" name="dir_refr_input" native="true"/>
              </item>
             </layout>
            </widget>
+           <widget class="GeometryInput" name="dir_geom_input" native="true"/>
           </widget>
          </item>
          <item row="1" column="0">
@@ -257,81 +118,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>592</width>
+          <width>280</width>
           <height>485</height>
          </rect>
         </property>
         <attribute name="label">
          <string>Обратная задача</string>
         </attribute>
-        <layout class="QGridLayout" name="gridLayout">
+        <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
-          <widget class="QSplitter" name="splitter">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <widget class="QWidget" name="layoutWidget">
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <item>
-              <widget class="QLabel" name="label_20">
-               <property name="text">
-                <string>Выбор модели атмосферы</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="rev_atm_combo">
-               <item>
-                <property name="text">
-                 <string>Единая модель</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item>
-              <widget class="QWidget" name="rev_atm_imput" native="true"/>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget">
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <item>
-              <widget class="QLabel" name="label_2">
-               <property name="text">
-                <string>Выбор модели преломления</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="rev_ref_combo">
-               <item>
-                <property name="text">
-                 <string>Без преломления</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Модель эффективного радиуса «4/3»</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Модель среднего значения k</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Модель среднего значения радиуса кривизны</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item>
-              <widget class="QWidget" name="rev_refr_imput" native="true"/>
-             </item>
-            </layout>
-           </widget>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="AtmosphereSelection" name="rev_atm_sel" native="true"/>
+           </item>
+           <item>
+            <widget class="AtmosphereInput" name="rev_atm_input" native="true"/>
+           </item>
+           <item>
+            <widget class="RefractionSelection" name="rev_refr_sel" native="true"/>
+           </item>
+           <item>
+            <widget class="RefractionInput" name="rev_refr_input" native="true"/>
+           </item>
+          </layout>
          </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="reverse_count_button">
@@ -359,6 +168,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GeometryInput</class>
+   <extends>QWidget</extends>
+   <header>geometryinput.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RefractionInput</class>
+   <extends>QWidget</extends>
+   <header>refractioninput.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AtmosphereInput</class>
+   <extends>QWidget</extends>
+   <header>atmosphereinput.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AtmosphereSelection</class>
+   <extends>QWidget</extends>
+   <header>atmosphereselection.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RefractionSelection</class>
+   <extends>QWidget</extends>
+   <header>refractionselection.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
