@@ -5,6 +5,9 @@ set(CMAKE_CXX_FLAGS "-DTEST_PLOTS")
 set(PROJECT_SOURCES
         water_vapour_test.cpp
         main.cpp
+        seg_model_test.cpp
+        exp_model_test.cpp
+        linear_interpolation_test.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
