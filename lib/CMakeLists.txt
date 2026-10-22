@@ -4,8 +4,8 @@ set(PROJECT_SOURCES
         water_vapour.cpp
         water_vapour.h
         atm_model.h
-        exp_atm_model.cpp
         exp_atm_model.h
+        exp_atm_model_heirs.h
         seg_atm_model.cpp
         seg_atm_model.h
         gost_atm_model.cpp
