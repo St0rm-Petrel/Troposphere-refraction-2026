@@ -6,10 +6,6 @@ AtmosphereSelection::AtmosphereSelection(QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->dir_atm_combo,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this,
-            &AtmosphereSelection::atmosphereChanged);
 
 }
 
