@@ -16,8 +16,6 @@ public:
     explicit AtmosphereSelection(QWidget *parent = nullptr);
     ~AtmosphereSelection();
 
-signals:
-    void atmosphereChanged(int index);
 
 private:
     Ui::AtmosphereSelection *ui;
