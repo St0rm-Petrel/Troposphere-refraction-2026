@@ -15,9 +15,6 @@ public:
     explicit RefractionSelection(QWidget *parent = nullptr);
     ~RefractionSelection();
 
-signals:
-    void refractionChanged(int index);
-
 
 private:
     Ui::RefractionSelection *ui;
