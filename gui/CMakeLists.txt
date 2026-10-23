@@ -7,12 +7,29 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        geometryinput.h
+        geometryinput.cpp 
+        geometryinput.ui 
+        refractionselection.ui
+        refractionselection.h 
+        refractionselection.cpp 
+        atmosphereselection.cpp 
+        atmosphereselection.h 
+        atmosphereselection.ui
+        calculatedirect.cpp 
+        calculatedirect.h 
+        calculatereverse.cpp 
+        calculatereverse.h
+
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(gui
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        calculatedirect.h calculatedirect.cpp
+        calculatereverse.h calculatereverse.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET gui APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -31,6 +48,8 @@ else()
         )
     endif()
 endif()
+
+target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
     gui
