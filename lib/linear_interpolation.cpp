@@ -12,7 +12,7 @@ double Linear_interpolation::operator()(double h) {
   }
   for (int i = 0; i < (hs_->size() - 2); i++) {
     if ((*hs_)[i] <= h <= (*hs_)[i + 1]) {
-      return (((*hs_)[i]) + ((*hs_)[i + 1] - (*hs_)[i]) * (h - (*hs_)[i]) /
+      return (((*vs_)[i]) + ((*vs_)[i + 1] - (*vs_)[i]) * (h - (*hs_)[i]) /
                                 ((*hs_)[i + 1] - (*hs_)[i]));
     }
   }
