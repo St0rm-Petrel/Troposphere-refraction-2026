@@ -17,6 +17,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void CalculateDir();
+    void CalculateRev();
+
 private:
     Ui::MainWindow *ui;
 };
