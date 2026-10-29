@@ -48,7 +48,7 @@
    <item row="2" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page_exp">
       <layout class="QGridLayout" name="gridLayout_9">
@@ -78,6 +78,9 @@
        </item>
        <item row="1" column="0">
         <widget class="QStackedWidget" name="exp_widget">
+         <property name="currentIndex">
+          <number>2</number>
+         </property>
          <widget class="QWidget" name="page_5">
           <layout class="QGridLayout" name="gridLayout_4">
            <item row="0" column="0">
@@ -90,9 +93,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="h_exp_input">
+              <widget class="QDoubleSpinBox" name="h_exp_input_7">
                <property name="maximum">
-                <double>1000.000000000000000</double>
+                <double>15000.000000000000000</double>
                </property>
               </widget>
              </item>
@@ -104,23 +107,26 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="ns_exp_input">
+              <widget class="QDoubleSpinBox" name="ns_exp_input_6">
                <property name="maximum">
-                <double>1000.000000000000000</double>
+                <double>15000.000000000000000</double>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="label_6">
                <property name="text">
-                <string>Показатель преломления N1</string>
+                <string>Показатель преломления на высоте 1 км N1</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="N1_exp_input">
+              <widget class="QDoubleSpinBox" name="N1_exp_input_6">
                <property name="maximum">
                 <double>1000.000000000000000</double>
+               </property>
+               <property name="value">
+                <double>318.000000000000000</double>
                </property>
               </widget>
              </item>
@@ -140,9 +146,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="h_exp_input_3">
+              <widget class="QDoubleSpinBox" name="h_exp_input_10">
                <property name="maximum">
-                <double>1000.000000000000000</double>
+                <double>15000.000000000000000</double>
                </property>
               </widget>
              </item>
@@ -154,23 +160,26 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="ns_exp_input_3">
+              <widget class="QDoubleSpinBox" name="ns_exp_input_10">
                <property name="maximum">
-                <double>1000.000000000000000</double>
+                <double>15000.000000000000000</double>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="label_13">
                <property name="text">
-                <string>Показатель преломления N1</string>
+                <string>Показатель преломления на высоте 1 км N1</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="N1_exp_input_3">
+              <widget class="QDoubleSpinBox" name="N1_exp_input_10">
                <property name="maximum">
                 <double>1000.000000000000000</double>
+               </property>
+               <property name="value">
+                <double>318.000000000000000</double>
                </property>
               </widget>
              </item>
@@ -190,9 +199,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="h_exp_input_7">
+              <widget class="QDoubleSpinBox" name="h_exp_input_15">
                <property name="maximum">
-                <double>1000.000000000000000</double>
+                <double>15000.000000000000000</double>
                </property>
               </widget>
              </item>
@@ -204,7 +213,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="ns_exp_input_6">
+              <widget class="QDoubleSpinBox" name="ns_exp_input_15">
                <property name="maximum">
                 <double>1000.000000000000000</double>
                </property>
@@ -213,14 +222,17 @@
              <item>
               <widget class="QLabel" name="label_24">
                <property name="text">
-                <string>Показатель преломления N1</string>
+                <string>Показатель преломления на высоте 1 км N1</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="N1_exp_input_6">
+              <widget class="QDoubleSpinBox" name="N1_exp_input_15">
                <property name="maximum">
                 <double>1000.000000000000000</double>
+               </property>
+               <property name="value">
+                <double>318.000000000000000</double>
                </property>
               </widget>
              </item>
@@ -238,9 +250,9 @@
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QDoubleSpinBox" name="h_exp_input_4">
+            <widget class="QDoubleSpinBox" name="h_exp_input_0">
              <property name="maximum">
-              <double>1000.000000000000000</double>
+              <double>15000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -252,23 +264,26 @@
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QDoubleSpinBox" name="ns_exp_input_4">
+            <widget class="QDoubleSpinBox" name="ns_exp_input_0">
              <property name="maximum">
-              <double>1000.000000000000000</double>
+              <double>15000.000000000000000</double>
              </property>
             </widget>
            </item>
            <item row="4" column="0">
             <widget class="QLabel" name="label_16">
              <property name="text">
-              <string>Показатель преломления N1</string>
+              <string>Показатель преломления на высоте 1 км N1</string>
              </property>
             </widget>
            </item>
            <item row="5" column="0">
-            <widget class="QDoubleSpinBox" name="N1_exp_input_4">
+            <widget class="QDoubleSpinBox" name="N1_exp_input_0">
              <property name="maximum">
               <double>1000.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>318.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -280,7 +295,7 @@
             </widget>
            </item>
            <item row="7" column="0">
-            <widget class="QDoubleSpinBox" name="ns_exp_input_5">
+            <widget class="QDoubleSpinBox" name="Nb_exp_input_0">
              <property name="maximum">
               <double>1000.000000000000000</double>
              </property>
@@ -294,9 +309,9 @@
             </widget>
            </item>
            <item row="9" column="0">
-            <widget class="QDoubleSpinBox" name="N1_exp_input_5">
+            <widget class="QDoubleSpinBox" name="hb_exp_input_0">
              <property name="maximum">
-              <double>1000.000000000000000</double>
+              <double>15000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -320,7 +335,7 @@
          <item>
           <widget class="QDoubleSpinBox" name="h_seg_input_5">
            <property name="maximum">
-            <double>1000.000000000000000</double>
+            <double>15000.000000000000000</double>
            </property>
           </widget>
          </item>
@@ -349,6 +364,9 @@
           <widget class="QDoubleSpinBox" name="N1_seg_input_6">
            <property name="maximum">
             <double>1000.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>318.000000000000000</double>
            </property>
           </widget>
          </item>
@@ -381,6 +399,9 @@
        </item>
        <item row="2" column="0">
         <widget class="QStackedWidget" name="int_widget">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_2">
            <item row="0" column="0">
@@ -393,7 +414,7 @@
            <item row="1" column="0">
             <widget class="QDoubleSpinBox" name="h_exp_input_5">
              <property name="maximum">
-              <double>1000.000000000000000</double>
+              <double>15000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -411,7 +432,7 @@
            <item row="1" column="0">
             <widget class="QDoubleSpinBox" name="h_exp_input_6">
              <property name="maximum">
-              <double>1000.000000000000000</double>
+              <double>15000.000000000000000</double>
              </property>
             </widget>
            </item>

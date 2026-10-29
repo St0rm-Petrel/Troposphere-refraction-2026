@@ -26,10 +26,10 @@
      <item>
       <widget class="QDoubleSpinBox" name="rev_ha">
        <property name="minimum">
-        <double>-10000.000000000000000</double>
+        <double>-500.000000000000000</double>
        </property>
        <property name="maximum">
-        <double>10000.000000000000000</double>
+        <double>15000.000000000000000</double>
        </property>
       </widget>
      </item>
@@ -47,10 +47,10 @@
      <item>
       <widget class="QDoubleSpinBox" name="rev_hs">
        <property name="minimum">
-        <double>-10000.000000000000000</double>
+        <double>-500.000000000000000</double>
        </property>
        <property name="maximum">
-        <double>10000.000000000000000</double>
+        <double>15000.000000000000000</double>
        </property>
       </widget>
      </item>
@@ -68,7 +68,7 @@
      <item>
       <widget class="QDoubleSpinBox" name="rev_r">
        <property name="maximum">
-        <double>10000.000000000000000</double>
+        <double>1000.000000000000000</double>
        </property>
       </widget>
      </item>
