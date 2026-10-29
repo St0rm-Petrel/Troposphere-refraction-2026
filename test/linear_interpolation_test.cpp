@@ -12,24 +12,28 @@
 
 BOOST_AUTO_TEST_SUITE(linear_interpolation_test)
 
-BOOST_AUTO_TEST_CASE(exact_node) {
+struct LinearInterpolationFixture {
   std::vector<double> hs{1000, 2000, 2500, 3000, 4500, 5000};
   std::vector<double> vs{300, 400, 550, 600, 700, 800};
-  Linear_interpolation li(hs, vs);
+  Linear_interpolation li{hs, vs};
+};
 
-  BOOST_TEST(li(1000) == 300.0);
-  BOOST_TEST(li(2500) == 550.0);
-  BOOST_TEST(li(5000) == 800.0);
+BOOST_FIXTURE_TEST_CASE(exact_node, LinearInterpolationFixture) {
+  std::vector<double> test_inputs{1000, 2500, 5000};
+  std::vector<double> expected_outputs{300.0, 550.0, 800.0};
+
+  for (size_t i = 0; i < test_inputs.size(); ++i) {
+    BOOST_TEST(li(test_inputs[i]) == expected_outputs[i]);
+  }
 }
 
-BOOST_AUTO_TEST_CASE(midpoint) {
-  std::vector<double> hs{1000, 2000, 2500, 3000, 4500, 5000};
-  std::vector<double> vs{300, 400, 550, 600, 700, 800};
-  Linear_interpolation li(hs, vs);
+BOOST_FIXTURE_TEST_CASE(midpoint, LinearInterpolationFixture) {
+  std::vector<double> test_inputs{1500, 2750, 4750};
+  std::vector<double> expected_outputs{350.0, 575.0, 750.0};
 
-  BOOST_TEST(li(1500) == 350.0);
-  BOOST_TEST(li(2750) == 575.0);
-  BOOST_TEST(li(4750) == 750.0);
+  for (size_t i = 0; i < test_inputs.size(); ++i) {
+    BOOST_TEST(li(test_inputs[i]) == expected_outputs[i]);
+  }
 }
 
 BOOST_AUTO_TEST_CASE(out_of_range) {
