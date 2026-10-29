@@ -14,15 +14,19 @@ constexpr double Nb10 = 102.9;
 
 class ExpAtmModel : public AtmModel {
 public:
-  ExpAtmModel(double h_s, double N_s, double H) : h_s_(h_s), N_s_(N_s), H_(H) {}
+  virtual ~ExpAtmModel() = default;
 
-  double N_h(double h, double, double, double = 318) override {
-    return N_s_ * std::exp(-(h - h_s_) / H_);
-  }
+  double N_h(double h) const { return N_s_ * std::exp(-(h - h_s_) / H_); }
+
+  double H() const noexcept { return H_; }
 
 protected:
-  double h_s_;
+  ExpAtmModel(double N_s, double h_s, double H) noexcept
+      : N_s_(N_s), h_s_(h_s), H_(H) {}
+
+private:
   double N_s_;
+  double h_s_;
   double H_;
 };
 

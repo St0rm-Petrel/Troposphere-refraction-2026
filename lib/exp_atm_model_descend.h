@@ -24,21 +24,23 @@ inline double Hb(double h_s, double N_s, double hb, double Nb) {
 }
 
 // H = He(N_s)
-class ExpAtmModel3k : public ExpAtmModel {
+class ExpAtmModel3k final : public ExpAtmModel {
 public:
-  ExpAtmModel3k() : ExpAtmModel(0.0, 318.0, He(318.0)) {}
+  ExpAtmModel3k(double N_s, double h_s) : ExpAtmModel(N_s, h_s, He(N_s)) {}
 };
 
 // H = (hb10 - h_s)/ln(N_s/Nb10)
-class ExpAtmModel10k : public ExpAtmModel {
+class ExpAtmModel10k final : public ExpAtmModel {
 public:
-  ExpAtmModel10k() : ExpAtmModel(0.0, 318.0, Hb(0.0, 318.0, hb10, Nb10)) {}
+  ExpAtmModel10k(double N_s, double h_s)
+      : ExpAtmModel(N_s, h_s, Hb(h_s, N_s, hb10, Nb10)) {}
 };
 
 // H = (hb15 - h_s)/ln(N_s/Nb15)
-class ExpAtmModel15k : public ExpAtmModel {
+class ExpAtmModel15k final : public ExpAtmModel {
 public:
-  ExpAtmModel15k() : ExpAtmModel(0.0, 318.0, Hb(0.0, 318.0, hb15, Nb15)) {}
+  ExpAtmModel15k(double N_s, double h_s)
+      : ExpAtmModel(N_s, h_s, Hb(h_s, N_s, hb15, Nb15)) {}
 };
 
 #endif // EXP_ATM_MODEL_HEIRS_H
