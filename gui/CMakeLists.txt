@@ -22,10 +22,9 @@ set(PROJECT_SOURCES
         atmosphereselection.cpp 
         atmosphereselection.h 
         atmosphereselection.ui
-        calculatedirect.cpp 
-        calculatedirect.h 
-        calculatereverse.cpp 
-        calculatereverse.h
+        calculate.cpp 
+        calculate.h 
+
 
 
 )
