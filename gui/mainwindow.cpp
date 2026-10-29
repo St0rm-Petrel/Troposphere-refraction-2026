@@ -7,8 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // рассчитать
-    connect(ui->direct_count_button, &QPushButton::clicked,
-            this, &MainWindow::CalculateDir);
+    connect(ui->count_button, &QPushButton::clicked,
+            this, &MainWindow::Calculate);
 
     connect(ui->reverse_count_button, &QPushButton::clicked,
             this, &MainWindow::CalculateRev);
