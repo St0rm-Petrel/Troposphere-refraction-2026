@@ -18,8 +18,7 @@ public:
     ~MainWindow();
 
 signals:
-    void CalculateDir();
-    void CalculateRev();
+    void Calculate();
 
 private:
     Ui::MainWindow *ui;
