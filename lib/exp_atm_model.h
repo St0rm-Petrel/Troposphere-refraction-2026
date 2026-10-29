@@ -16,7 +16,7 @@ class ExpAtmModel : public AtmModel {
 public:
   virtual ~ExpAtmModel() = default;
 
-  double N_h(double h) const { return N_s_ * std::exp(-(h - h_s_) / H_); }
+  double N_h(double h) override { return N_s_ * std::exp(-(h - h_s_) / H_); }
 
   double H() const noexcept { return H_; }
 
