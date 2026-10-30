@@ -2,11 +2,31 @@ cmake_minimum_required(VERSION 3.5)
 
 project(gui VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        geometryinput.h
+        geometryinput.cpp 
+        geometryinput.ui 
+        refractionselection.ui
+        refractionselection.h 
+        refractionselection.cpp 
+        atmosphereselection.cpp 
+        atmosphereselection.h 
+        atmosphereselection.ui
+        calculate.cpp 
+        calculate.h 
+
+
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -31,6 +51,8 @@ else()
         )
     endif()
 endif()
+
+target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
     gui
