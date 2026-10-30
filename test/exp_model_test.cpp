@@ -1,4 +1,5 @@
 #include "../lib/exp_atm_model.h"
+#include "../lib/exp_atm_model_descend.h"
 #include "qcustomplot.h"
 #include <QApplication>
 
@@ -12,13 +13,12 @@ namespace utf = boost::unit_test;
 
 BOOST_AUTO_TEST_SUITE(test_exp_model)
 
-class ExpAtmFixture {
-public:
-  ExpAtmModel model;
+struct ExpAtmFixture {
+  ExpAtmModel3k model{300.0, 10.0};
 };
 
 BOOST_FIXTURE_TEST_CASE(h_and_hs_are_equal, ExpAtmFixture) {
-  BOOST_TEST(model.N_h(10, 300, 10) == 300);
+  BOOST_TEST(model.N_h(10.0) == 300.0);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

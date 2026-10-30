@@ -2,6 +2,7 @@
 #define EXP_ATM_MODEL_H
 
 #include "atm_model.h"
+#include <cmath>
 
 // SRC: (2.31) from citation:
 constexpr double hb15 = 12192;
@@ -13,11 +14,20 @@ constexpr double Nb10 = 102.9;
 
 class ExpAtmModel : public AtmModel {
 public:
-  double N_h(double h, double N_s, double h_s, double N1 = 318) override;
+  virtual ~ExpAtmModel() = default;
 
-  // auxiliary function for finding the Hb value
-  // SRC : (2.30) from citation
-  double H_b(double h, double N_s, double h_s);
+  double N_h(double h) override { return N_s_ * std::exp(-(h - h_s_) / H_); }
+
+  double H() const noexcept { return H_; }
+
+protected:
+  ExpAtmModel(double N_s, double h_s, double H) noexcept
+      : N_s_(N_s), h_s_(h_s), H_(H) {}
+
+private:
+  double N_s_;
+  double h_s_;
+  double H_;
 };
 
 #endif // EXP_ATM_MODEL_H
