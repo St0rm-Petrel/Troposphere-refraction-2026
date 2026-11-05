@@ -33,14 +33,24 @@ public:
 class ExpAtmModel10k final : public ExpAtmModel {
 public:
   ExpAtmModel10k(double N_s, double h_s)
-      : ExpAtmModel(N_s, h_s, Hb(h_s, N_s, hb10, Nb10)) {}
+      : ExpAtmModel(N_s, h_s, Hb(h_s, N_s, hb, Nb)) {}
+
+private:
+  // SRC: (2.32) from citation
+  static inline constexpr double hb = 9144;
+  static inline constexpr double Nb = 102.9;
 };
 
 // H = (hb15 - h_s)/ln(N_s/Nb15)
 class ExpAtmModel15k final : public ExpAtmModel {
 public:
   ExpAtmModel15k(double N_s, double h_s)
-      : ExpAtmModel(N_s, h_s, Hb(h_s, N_s, hb15, Nb15)) {}
+      : ExpAtmModel(N_s, h_s, Hb(h_s, N_s, hb, Nb)) {}
+
+private:
+  // SRC: (2.31) from citation:
+  static inline constexpr double hb = 12192;
+  static inline constexpr double Nb = 66.65;
 };
 
 #endif // EXP_ATM_MODEL_DESCEND_H
