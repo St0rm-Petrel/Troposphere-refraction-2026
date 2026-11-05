@@ -8,7 +8,7 @@ public:
 
   // Get N(h) - refractive index depending on height
   // SRC : (2.27) - (2.30) from citation
-  virtual double N_h(double h);
+  virtual double N_h(double h) = 0;
 };
 
 #endif // ATM_MODEL_H
