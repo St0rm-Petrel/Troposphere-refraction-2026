@@ -1,5 +1,5 @@
-#ifndef EXP_ATM_MODEL_HEIRS_H
-#define EXP_ATM_MODEL_HEIRS_H
+#ifndef EXP_ATM_MODEL_DESCEND_H
+#define EXP_ATM_MODEL_DESCEND_H
 
 #include "atm_model.h"
 #include "exp_atm_model.h"
@@ -43,4 +43,4 @@ public:
       : ExpAtmModel(N_s, h_s, Hb(h_s, N_s, hb15, Nb15)) {}
 };
 
-#endif // EXP_ATM_MODEL_HEIRS_H
+#endif // EXP_ATM_MODEL_DESCEND_H
