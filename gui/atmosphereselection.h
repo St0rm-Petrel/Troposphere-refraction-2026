@@ -21,12 +21,12 @@ class AtmosphereSelection : public QWidget
 public:
     explicit AtmosphereSelection(QWidget *parent = nullptr);
     ~AtmosphereSelection();
-    AtmModel *create_atmospheric_model(int index, double N_s, double h_s, double H);
     int get_atm_index() const;
     double get_Ns() const;
     double get_h() const;
     double get_N1() const;
-
+    AtmModel *create_atmospheric_model();
+    
 private:
     Ui::AtmosphereSelection *ui;
 };

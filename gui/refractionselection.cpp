@@ -18,8 +18,9 @@ int RefractionSelection::get_refr_index() const
     return ui->rev_ref_combo->currentIndex(); 
 }
 
-RefractionModel *RefractionSelection::create_refraction_model(int index)
+RefractionModel *RefractionSelection::create_refraction_model()
 {
+    int index = get_refr_index();
     switch (index)
     {
     case 0:
