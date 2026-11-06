@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // рассчитать
     connect(ui->count_button, &QPushButton::clicked,
-            this, &MainWindow::Calculate);
+            this, &MainWindow::CalculateButton);
 
     draw_plot();
 }
@@ -28,16 +28,16 @@ void MainWindow::CalculateButton()
     double H   = 12192.0;
 
     Calculate calc;
-    RefractionModel *refrModel = ui->dir_refr_sel->create_refraction_model(refr_index);
-    AtmModel *atmModel = ui->dir_atm_sel->create_atmospheric_model(atm_index, N_s, h_s, 12192.0);
-    CalculationResult res = calc.calculate_direct(h_a, h_s, r, refrModel, atmModel);
+    RefractionModel *refrModel = ui->dir_refr_sel->create_refraction_model();
+    AtmModel *atmModel = ui->dir_atm_sel->create_atmospheric_model();
+    CalculatedResult res = calc.calculate_direct(h_a, h_s, r, refrModel, atmModel);
     cout_dir_results(res);
 
     delete refrModel;
     delete atmModel;
 }
 
-void MainWindow::cout_dir_results(const CalculationResult &res)
+void MainWindow::cout_dir_results(const CalculatedResult &res)
 {
     ui->tableWidget->setItem(0, 1, new QTableWidgetItem(QString::number(res.psi_d)));
     ui->tableWidget->setItem(1, 1, new QTableWidgetItem(QString::number(res.psi_g)));
