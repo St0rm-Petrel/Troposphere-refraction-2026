@@ -3,13 +3,6 @@
 #ifndef CALCULATE_H
 #define CALCULATE_H
 
-struct CalculationResult
-{
-    double d;
-    double psi_d;
-    double psi_g;
-};
-
 class Calculate
 {
 public:

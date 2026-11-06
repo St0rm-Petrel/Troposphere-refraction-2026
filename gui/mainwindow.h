@@ -22,7 +22,7 @@ public:
 private:
     Ui::MainWindow *ui;
     void draw_plot();
-    void cout_dir_results(const CalculationResult &res);
+    void cout_dir_results(const CalculatedResult &res);
 
 private slots:
     void CalculateButton();
