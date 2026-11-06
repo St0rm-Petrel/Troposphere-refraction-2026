@@ -1,6 +1,5 @@
 #include "refractionselection.h"
 #include "ui_refractionselection.h"
-#include "refraction_model.h"
 
 RefractionSelection::RefractionSelection(QWidget *parent)
     : QWidget(parent), ui(new Ui::RefractionSelection)
