@@ -2,7 +2,7 @@
 #define REFRACTIONSELECTION_H
 
 #include <QWidget>
-#include "refraction_model.h"
+#include "../lib/refraction_model.h"
 
 namespace Ui
 {

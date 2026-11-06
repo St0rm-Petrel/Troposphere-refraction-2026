@@ -2,11 +2,11 @@
 #define ATMOSPHERESELECTION_H
 
 #include <QWidget>
-#include "atm_model.h"
-#include "exp_atm_model.h"
-#include "seg_atm_model.h"
-#include "gost_atm_model.h"
-#include "exp_atm_model_descend.h" 
+#include "../lib/atm_model.h"
+#include "../lib/exp_atm_model.h"
+#include "../lib/seg_atm_model.h"
+#include "../lib/gost_atm_model.h"
+#include "../lib/exp_atm_model_descend.h" 
 
 
 namespace Ui
