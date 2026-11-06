@@ -54,6 +54,7 @@ target_include_directories(gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(
     gui
     PRIVATE
+    lib
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::PrintSupport
     QCustomPlot::QCustomPlot

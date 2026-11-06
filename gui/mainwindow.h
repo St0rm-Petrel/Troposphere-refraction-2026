@@ -2,10 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "calculate.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
+namespace Ui
+{
+    class MainWindow;
 }
 QT_END_NAMESPACE
 
@@ -17,10 +19,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-signals:
-    void Calculate();
-
 private:
     Ui::MainWindow *ui;
+    void draw_plot();
+    void cout_dir_results(const CalculatedResult &res);
+
+private slots:
+    void CalculateButton();
 };
 #endif // MAINWINDOW_H
