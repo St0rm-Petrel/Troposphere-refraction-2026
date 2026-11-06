@@ -15,7 +15,7 @@ class RefractionSelection : public QWidget
 
 public:
     explicit RefractionSelection(QWidget *parent = nullptr);
-    RefractionModel *create_refraction_model(int index);
+    RefractionModel *create_refraction_model();
     int get_refr_index() const;
     ~RefractionSelection();
 
