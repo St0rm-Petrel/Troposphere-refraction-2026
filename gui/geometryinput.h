@@ -13,6 +13,9 @@ class GeometryInput : public QWidget
 
 public:
     explicit GeometryInput(QWidget *parent = nullptr);
+    double get_h_a() const;
+    double get_h_s() const;
+    double get_r() const;
     ~GeometryInput();
 
 private:
