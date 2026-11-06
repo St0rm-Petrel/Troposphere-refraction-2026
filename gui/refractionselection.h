@@ -2,9 +2,11 @@
 #define REFRACTIONSELECTION_H
 
 #include <QWidget>
+#include "refraction_model.h"
 
-namespace Ui {
-class RefractionSelection;
+namespace Ui
+{
+    class RefractionSelection;
 }
 
 class RefractionSelection : public QWidget
@@ -13,8 +15,9 @@ class RefractionSelection : public QWidget
 
 public:
     explicit RefractionSelection(QWidget *parent = nullptr);
+    RefractionModel *create_refraction_model(int index);
+    int get_refr_index() const;
     ~RefractionSelection();
-
 
 private:
     Ui::RefractionSelection *ui;
