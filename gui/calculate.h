@@ -1,5 +1,5 @@
-#include "refraction_model.h"
-#include "atm_model.h"
+#include "../lib/refraction_model.h"
+#include "../lib/atm_model.h"
 #ifndef CALCULATE_H
 #define CALCULATE_H
 
