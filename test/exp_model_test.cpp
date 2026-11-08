@@ -1,5 +1,5 @@
-#include "../lib/exp_atm_model.h"
-#include "../lib/exp_atm_model_descend.h"
+#include "exp_atm_model.h"
+#include "exp_atm_model_descend.h"
 #include "qcustomplot.h"
 #include <QApplication>
 
