@@ -11,6 +11,7 @@ public:
   double N_h(double h) override { return N_s_ * std::exp(-(h - h_s_) / H_); }
 
   double H() const noexcept { return H_; }
+  double N_s() const noexcept { return N_s_; }
 
 protected:
   ExpAtmModel(double N_s, double h_s, double H) noexcept
