@@ -1,5 +1,3 @@
-project(tests VERSION 0.1 LANGUAGES CXX)
-
 set(PROJECT_SOURCES
         water_vapour_test.cpp
         without_curvature_test.cpp
