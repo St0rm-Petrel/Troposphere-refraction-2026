@@ -17,3 +17,5 @@ set(PROJECT_SOURCES
 )
 
 add_library(lib STATIC ${PROJECT_SOURCES})
+
+target_include_directories(lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

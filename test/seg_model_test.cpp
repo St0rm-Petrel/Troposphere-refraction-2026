@@ -1,4 +1,4 @@
-#include "../lib/seg_atm_model.h"
+#include "seg_atm_model.h"
 #include "qcustomplot.h"
 #include <QApplication>
 
