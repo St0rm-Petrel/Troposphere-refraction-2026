@@ -24,9 +24,16 @@ BOOST_FIXTURE_TEST_CASE(h_and_hs_are_equal, SegAtmFixture10) {
   BOOST_TEST(model.N_h(10.0) == 300.0);
 }
 
-BOOST_FIXTURE_TEST_CASE(Nh_hs_plus_1000m, SegAtmFixture1000) {
-  BOOST_TEST(model.N_h(2000.0 + 1e-6) == model.N_h(2000.0 - 1e-6),
-             tt::tolerance(1e-6));
+BOOST_FIXTURE_TEST_CASE(Nh_at_hs_plus_1000m, SegAtmFixture1000) {
+  double delta_N = -0.00732 * std::exp(0.005577 * 300.0);
+  double expected = 300.0 + 1000.0 * delta_N;
+  BOOST_TEST(model.N_h(2000.0) == expected, tt::tolerance(1e-6));
+}
+
+BOOST_FIXTURE_TEST_CASE(Nh_at_9000m, SegAtmFixture1000) {
+  double H = (8000.0 - 1000.0) / std::log(318.0 / 105.0);
+  double expected = 318.0 * std::exp(-(9000.0 - 1000.0 - 1000.0) / H);
+  BOOST_TEST(model.N_h(9000.0) == expected, tt::tolerance(1e-6));
 }
 
 BOOST_FIXTURE_TEST_CASE(h_9000m, SegAtmFixture1000) {

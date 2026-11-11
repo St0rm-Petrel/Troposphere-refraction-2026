@@ -2,7 +2,7 @@
 #include <cmath>
 
 double SegAtmModel::N_h(double h) {
-  if ((h < h_s_) || h_s_ <= h && h <= (h_s_ + 1000)) {
+  if (h <= (h_s_ + 1000)) {
     double delta_N = (0 - 0.00732) * std::exp(0.005577 * N_s_);
     return (N_s_ + (h - h_s_) * delta_N);
   } else if (h_s_ + 1000 <= h && h <= 9000) {
