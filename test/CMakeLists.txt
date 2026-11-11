@@ -1,7 +1,3 @@
-project(tests VERSION 0.1 LANGUAGES CXX)
-
-set(CMAKE_CXX_FLAGS "-DTEST_PLOTS")
-
 set(PROJECT_SOURCES
         water_vapour_test.cpp
         without_curvature_test.cpp
@@ -35,11 +31,16 @@ else()
     endif()
 endif()
 
-target_link_libraries(tests PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(tests PRIVATE lib)
-target_link_libraries(tests PRIVATE ${Boost_LIBRARIES})
+target_compile_definitions(tests PRIVATE TEST_PLOTS)
 target_compile_definitions(tests PRIVATE QCUSTOMPLOT_USE_LIBRARY)
-target_link_libraries(tests PRIVATE QCustomPlot::QCustomPlot)
+
+target_link_libraries(tests PRIVATE
+    lib
+    Qt${QT_VERSION_MAJOR}::Widgets
+    QCustomPlot::QCustomPlot
+    Boost::unit_test_framework
+    Boost::locale
+)
 
 set_target_properties(tests PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

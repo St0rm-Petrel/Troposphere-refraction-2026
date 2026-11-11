@@ -1,5 +1,3 @@
-project(lib VERSION 0.1 LANGUAGES CXX)
-
 set(PROJECT_SOURCES
         water_vapour.cpp
         water_vapour.h
@@ -17,3 +15,5 @@ set(PROJECT_SOURCES
 )
 
 add_library(lib STATIC ${PROJECT_SOURCES})
+
+target_include_directories(lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

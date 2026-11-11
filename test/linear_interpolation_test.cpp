@@ -1,4 +1,4 @@
-#include "../lib/linear_interpolation.h"
+#include "linear_interpolation.h"
 #include "qcustomplot.h"
 #include <QApplication>
 
