@@ -21,7 +21,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    void draw_plot();
+    void draw_plot(double r_p, double ha_p, double hs_p);
+    void draw_ray(double x_start, double y_start, double x_end, double y_end);
     void cout_dir_results(const CalculatedResult &res);
 
 private slots:
