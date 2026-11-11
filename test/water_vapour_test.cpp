@@ -1,4 +1,4 @@
-#include "../lib/water_vapour.h"
+#include "water_vapour.h"
 
 #include <QApplication>
 

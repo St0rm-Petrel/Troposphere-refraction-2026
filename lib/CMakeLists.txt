@@ -1,8 +1,19 @@
-project(lib VERSION 0.1 LANGUAGES CXX)
-
 set(PROJECT_SOURCES
         water_vapour.cpp
         water_vapour.h
+        atm_model.h
+        exp_atm_model.h
+        exp_atm_model_descend.h
+        seg_atm_model.cpp
+        seg_atm_model.h
+        gost_atm_model.cpp
+        gost_atm_model.h
+        linear_interpolation.cpp
+        linear_interpolation.h
+        refraction_model.h
+        refraction_model.cpp
 )
 
 add_library(lib STATIC ${PROJECT_SOURCES})
+
+target_include_directories(lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

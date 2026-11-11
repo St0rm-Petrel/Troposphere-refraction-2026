@@ -1,17 +1,18 @@
-project(tests VERSION 0.1 LANGUAGES CXX)
-
-set(CMAKE_CXX_FLAGS "-DTEST_PLOTS")
-
 set(PROJECT_SOURCES
         water_vapour_test.cpp
+        without_curvature_test.cpp
+        with_curvature_test.cpp
         main.cpp
+        seg_model_test.cpp
+        exp_model_test.cpp
+        linear_interpolation_test.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(tests
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-    )
+    ) 
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET tests APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
@@ -30,11 +31,16 @@ else()
     endif()
 endif()
 
-target_link_libraries(tests PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(tests PRIVATE lib)
-target_link_libraries(tests PRIVATE ${Boost_LIBRARIES})
+target_compile_definitions(tests PRIVATE TEST_PLOTS)
 target_compile_definitions(tests PRIVATE QCUSTOMPLOT_USE_LIBRARY)
-target_link_libraries(tests PRIVATE QCustomPlot::QCustomPlot)
+
+target_link_libraries(tests PRIVATE
+    lib
+    Qt${QT_VERSION_MAJOR}::Widgets
+    QCustomPlot::QCustomPlot
+    Boost::unit_test_framework
+    Boost::locale
+)
 
 set_target_properties(tests PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

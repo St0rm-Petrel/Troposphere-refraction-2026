@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void Calculate();
+
 private:
     Ui::MainWindow *ui;
 };
