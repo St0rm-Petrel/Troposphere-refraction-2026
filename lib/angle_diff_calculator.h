@@ -1,5 +1,5 @@
-#ifndef ANGLE_DIFF_CALCULATE
-#define ANGLE_DIFF_CALCULATE
+#ifndef ANGLE_DIFF_CALCULATOR
+#define ANGLE_DIFF_CALCULATOR
 #include <cmath>
 
 double Re = 6371000;
@@ -22,14 +22,10 @@ public:
   // h_a - flight altitude of the aircraft, m
   double calculate_d_and_psi_g(double psi_d, double h_s, double h_a);
 
-protected:
-  AngleDifferenceCalculator(double psi_d, double h_s, double h_a) noexcept
-      : psi_d_(psi_d), h_s_(h_s), h_a_(h_a) {}
-
 private:
   double psi_d_;
   double h_s_;
   double h_a_;
 };
 
-#endif // ANGLE_DIFF_CALCULATE
+#endif // ANGLE_DIFF_CALCULATOR
