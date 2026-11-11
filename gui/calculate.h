@@ -8,7 +8,7 @@ class Calculate
 public:
     Calculate();
 
-    CalculationResult calculate_direct(
+    CalculatedResult calculate_direct(
         double h_a,
         double h_s,
         double r,
