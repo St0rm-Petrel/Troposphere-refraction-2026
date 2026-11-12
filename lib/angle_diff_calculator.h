@@ -3,6 +3,7 @@
 #include <cmath>
 
 double Re = 6371000;
+double dh = 100;
 
 class AngleDifferenceCalculator {
 
@@ -13,14 +14,15 @@ public:
   // SRC: (2.43) from citation
   // h_s - height of the target above the surface of the spherical Earth, m
   // h_a - flight altitude of the aircraft, m
-  virtual double integral_hs_ha(double h_s, double h_a) = 0;
+  virtual double integral_hs_ha(double h_s, double h_a, double N_s) = 0;
 
   // function for calculation intergral of refractive index
   // SRC: (2.42), (2.43), (2.46) and (2.47) from citation|
   // psi_d - declination angle, radians
   // h_s - height of the target above the surface of the spherical Earth, m
   // h_a - flight altitude of the aircraft, m
-  double calculate_d_and_psi_g(double psi_d, double h_s, double h_a);
+  double calculate_d_and_psi_g(double psi_d, double h_s, double h_a,
+                               double N_s);
 
 private:
   double psi_d_;
