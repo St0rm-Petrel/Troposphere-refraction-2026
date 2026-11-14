@@ -12,7 +12,8 @@ double AngleDifferenceCalculator::calculate_d_and_psi_g(double psi_d,
   return std::acos(cospsi_g);
 }
 
-double integral_hs_ha(double h_s, double h_a, double N_s) {
+double AngleDifferenceCalculator::integral_hs_ha(double h_s, double h_a,
+                                                 double N_s) {
 
   double h_curr = h_s;
   double result = 0;
@@ -24,10 +25,10 @@ double integral_hs_ha(double h_s, double h_a, double N_s) {
     }
     SegAtmModel model(N_s, h_curr);
     double n_max = (model.N_h(h_curr) * 1e-6) + 1;
-    double n_min = (model.N_h(h_curr + dh) * 1e-6) + 1;
+    double n_min = (model.N_h(h_curr + step) * 1e-6) + 1;
     double dn = n_min - n_max;
-    result += (2 / (n_max + n_min)) * dn;
-    h_curr += dh;
+    result += (log(n_min / n_max)) * dn;
+    h_curr += step;
   }
   return (result);
 }
