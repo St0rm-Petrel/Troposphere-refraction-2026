@@ -48,7 +48,7 @@
    <item row="2" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="page_exp">
       <layout class="QGridLayout" name="gridLayout_9">
@@ -79,7 +79,7 @@
        <item row="1" column="0">
         <widget class="QStackedWidget" name="exp_widget">
          <property name="currentIndex">
-          <number>2</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="page_5">
           <layout class="QGridLayout" name="gridLayout_4">
@@ -93,7 +93,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="h_exp_input_7">
+              <widget class="QDoubleSpinBox" name="h_exp_input_3">
                <property name="maximum">
                 <double>15000.000000000000000</double>
                </property>
@@ -107,7 +107,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="ns_exp_input_6">
+              <widget class="QDoubleSpinBox" name="ns_exp_input_3">
                <property name="maximum">
                 <double>15000.000000000000000</double>
                </property>
@@ -121,7 +121,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="N1_exp_input_6">
+              <widget class="QDoubleSpinBox" name="N1_exp_input_3">
                <property name="maximum">
                 <double>1000.000000000000000</double>
                </property>
@@ -333,7 +333,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QDoubleSpinBox" name="h_seg_input_5">
+          <widget class="QDoubleSpinBox" name="h_seg_input">
            <property name="maximum">
             <double>15000.000000000000000</double>
            </property>
@@ -347,7 +347,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QDoubleSpinBox" name="ns_seg_input_6">
+          <widget class="QDoubleSpinBox" name="ns_seg_input">
            <property name="maximum">
             <double>1000.000000000000000</double>
            </property>
@@ -361,7 +361,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QDoubleSpinBox" name="N1_seg_input_6">
+          <widget class="QDoubleSpinBox" name="N1_seg_input">
            <property name="maximum">
             <double>1000.000000000000000</double>
            </property>
@@ -412,7 +412,7 @@
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QDoubleSpinBox" name="h_exp_input_5">
+            <widget class="QDoubleSpinBox" name="h_exp_input_1">
              <property name="maximum">
               <double>15000.000000000000000</double>
              </property>
@@ -430,7 +430,7 @@
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QDoubleSpinBox" name="h_exp_input_6">
+            <widget class="QDoubleSpinBox" name="h_exp_input_2">
              <property name="maximum">
               <double>15000.000000000000000</double>
              </property>
