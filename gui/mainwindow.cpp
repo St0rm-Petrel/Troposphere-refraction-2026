@@ -22,7 +22,6 @@ void MainWindow::CalculateButton()
     double r = ui->dir_geom_input->get_r();
 
     // параметры атмосферы - пока для экп.модели
-    double N_s = ui->dir_atm_sel->get_Ns();
     double H = 12192.0;
 
     Calculate calc;
