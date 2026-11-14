@@ -11,7 +11,7 @@ double Linear_interpolation::operator()(double h) {
         "Interpolation process failed because of inapropriate data");
   }
   for (int i = 0; i < (hs_.size() - 2); i++) {
-    if ((hs_)[i] <= h <= (hs_)[i + 1]) {
+    if (((hs_)[i] <= h) && (h <= (hs_)[i + 1])) {
       return (((vs_)[i]) + ((vs_)[i + 1] - (vs_)[i]) * (h - (hs_)[i]) /
                                ((hs_)[i + 1] - (hs_)[i]));
     }

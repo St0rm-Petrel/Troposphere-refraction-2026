@@ -12,6 +12,8 @@ set(PROJECT_SOURCES
         linear_interpolation.h
         refraction_model.h
         refraction_model.cpp
+        angle_diff_calculator.h
+        angle_diff_calculator.cpp
 )
 
 add_library(lib STATIC ${PROJECT_SOURCES})
