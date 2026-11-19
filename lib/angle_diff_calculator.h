@@ -2,9 +2,6 @@
 #define ANGLE_DIFF_CALCULATOR
 #include <cmath>
 
-double Re = 6371000;
-double dh = 100;
-
 class AngleDifferenceCalculator {
 
 public:
@@ -21,11 +18,11 @@ public:
   // psi_d - declination angle, radians
   // h_s - height of the target above the surface of the spherical Earth, m
   // h_a - flight altitude of the aircraft, m
-  double calculate_d_and_psi_g(double psi_d, double h_s, double h_a,
+  double calculate_d_and_psi_d(double psi_g, double h_s, double h_a,
                                double N_s);
 
 private:
-  double psi_d_;
+  double psi_g_;
   double h_s_;
   double h_a_;
 };

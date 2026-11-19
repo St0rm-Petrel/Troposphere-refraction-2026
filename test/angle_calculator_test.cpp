@@ -1,62 +1,27 @@
 #include "../lib/angle_diff_calculator.h"
 #include "../lib/seg_atm_model.h"
-
 #include "qcustomplot.h"
 #include <QApplication>
+#include <QColor>
+#include <QPen>
+#include <QSharedPointer>
+#include <QString>
+#include <QVector>
+
+#include <cmath>
+#include <vector>
 
 #if !defined(WIN32)
 #define BOOST_TEST_DYN_LINK
 #endif
 #include <boost/test/unit_test.hpp>
 
-#include <QString>
-#include <cmath>
-#include <vector>
-
-namespace tt = boost::test_tools;
 namespace utf = boost::unit_test;
 
 namespace {
-class TestAngleCalculator {
-public:
-  double integral_hs_ha(double h_s, double h_a, double N_s) {
-    double h_curr = h_s;
-    double result = 0.0;
-    const double step_size = 100.0;
-
-    while (h_curr < h_a) {
-      double step = step_size;
-      if ((h_a - h_curr) < step) {
-        step = h_a - h_curr;
-      }
-      SegAtmModel model(N_s, h_curr);
-      double n_max = (model.N_h(h_curr) * 1e-6) + 1.0;
-      double n_min = (model.N_h(h_curr + step) * 1e-6) + 1.0;
-
-      double dn = n_min - n_max;
-      result += (2.0 / (n_max + n_min)) * dn;
-      h_curr += step;
-    }
-    return result;
-  }
-
-  // Переименованный метод: вычисляет ψ_d из ψ_g напрямую
-  double calculate_psi_d_from_psi_g(double psi_g, double h_s, double h_a,
-                                    double N_s) {
-    double integral_val = integral_hs_ha(h_s, h_a, N_s);
-
-    constexpr double Re = 6371000.0;
-
-    double cospsi_d =
-        std::cos(psi_g) *
-        std::exp(-(std::log((Re + h_a) / (Re + h_s)) + integral_val));
-
-    if (cospsi_d > 1.0)
-      cospsi_d = 1.0;
-    if (cospsi_d < -1.0)
-      cospsi_d = -1.0;
-
-    return std::acos(cospsi_d);
+struct ConcreteAngleCalculator : public AngleDifferenceCalculator {
+  double integral_hs_ha(double h_s, double h_a, double N_s) override {
+    return AngleDifferenceCalculator::integral_hs_ha(h_s, h_a, N_s);
   }
 };
 } // namespace
@@ -67,33 +32,36 @@ BOOST_AUTO_TEST_SUITE(test_angle_diff)
 
 BOOST_AUTO_TEST_CASE(plot_angle_diff_vs_height, *utf::label("plot")) {
   int argc = 1;
-  const char *argv[] = {"tests"};
-  QApplication a(argc, const_cast<char **>(argv));
+  char arg1[] = "tests";
+  char *argv[] = {arg1, nullptr};
+  QApplication a(argc, argv);
 
   QCustomPlot customPlot;
   customPlot.resize(900, 700);
+  customPlot.setInteractions(QCP::iRangeDrag | QCP::iRangeZoom |
+                             QCP::iSelectPlottables);
 
   customPlot.legend->setVisible(true);
   customPlot.legend->setBrush(QBrush(QColor(255, 255, 255, 230)));
-
   QFont legendFont = QApplication::font();
   legendFont.setPointSize(10);
   customPlot.legend->setFont(legendFont);
 
-  const std::vector<double> Ns_values = {250, 313, 400};
-  const std::vector<double> psi_g_values_deg = {30, 10, 3, 1, 0.3, 0.1};
+  const std::vector<double> psi_g_values_deg = {30.0, 10.0, 3.0, 1.0, 0.3, 0.1};
+  const std::vector<double> Ns_values = {250.0, 313.0, 400.0};
 
-  const int N = 500;
-  const double h_min = 0.0, h_max = 15000.0;
-  const double h_s = 0.0; // Объявлено здесь
+  const int N_points = 500;
+  const double h_min = 0.0;
+  const double h_max = 30000.0;
+  const double h_s = 0.0;
 
   const std::vector<QColor> colors = {Qt::blue, Qt::red, Qt::darkGreen};
-  const std::vector<double> line_widths = {2.0, 2.0, 1.5, 1.5, 1.0, 1.0};
+  const std::vector<double> line_widths = {2.5, 2.5, 2.0, 2.0, 1.5, 1.5};
   const std::vector<Qt::PenStyle> line_styles = {Qt::SolidLine, Qt::SolidLine,
-                                                 Qt::SolidLine, Qt::DashLine,
+                                                 Qt::DashLine,  Qt::DashLine,
                                                  Qt::DotLine,   Qt::DotLine};
 
-  TestAngleCalculator calc; // Объявлено здесь
+  ConcreteAngleCalculator calc;
   int graph_idx = 0;
   const double pi = std::acos(-1.0);
 
@@ -102,17 +70,19 @@ BOOST_AUTO_TEST_CASE(plot_angle_diff_vs_height, *utf::label("plot")) {
     QColor color = colors[i];
 
     for (size_t j = 0; j < psi_g_values_deg.size(); ++j) {
-      double psi_g_rad = psi_g_values_deg[j] * pi / 180.0;
+      double psi_g_deg = psi_g_values_deg[j];
+      double psi_g_rad = psi_g_deg * pi / 180.0;
 
-      QVector<double> x(N), y(N);
-      for (int k = 0; k < N; ++k) {
-        double h_a = h_min + k * (h_max - h_min) / (N - 1);
-        y[k] = h_a;
+      QVector<double> x(N_points), y(N_points);
+      for (int k = 0; k < N_points; ++k) {
+        double h_a = h_min + k * (h_max - h_min) / (N_points - 1);
 
-        // Прямой вызов без бинарного поиска
-        double psi_d_rad =
-            calc.calculate_psi_d_from_psi_g(psi_g_rad, h_s, h_a, N_s);
-        x[k] = std::abs(psi_d_rad - psi_g_rad) * 180.0 / pi;
+        y[k] = h_a / 1000.0;
+
+        double psi_d_rad = calc.calculate_d_and_psi_d(psi_g_rad, h_s, h_a, N_s);
+        double psi_d_deg = psi_d_rad * 180.0 / pi;
+
+        x[k] = std::abs(psi_d_deg - psi_g_deg);
       }
 
       customPlot.addGraph();
@@ -124,25 +94,36 @@ BOOST_AUTO_TEST_CASE(plot_angle_diff_vs_height, *utf::label("plot")) {
       customPlot.graph(graph_idx)->setPen(pen);
 
       QString name =
-          QString("Ns=%1, \\psi_g=%2\\260").arg(N_s).arg(psi_g_values_deg[j]);
+          QString("Ns=%1, \u03C8_g=%2\u00B0").arg(N_s).arg(psi_g_deg);
       customPlot.graph(graph_idx)->setName(name);
       graph_idx++;
     }
   }
 
-  customPlot.xAxis->setLabel("|\\psi_d - \\psi_g|, degrees");
-  customPlot.yAxis->setLabel("Height, m");
+  customPlot.xAxis->setLabel("|\u03C8_d - \u03C8_g|, degrees");
+  customPlot.yAxis->setLabel("Height, km");
+
+  customPlot.xAxis->grid()->setVisible(true);
   customPlot.xAxis->grid()->setSubGridVisible(true);
+  customPlot.yAxis->grid()->setVisible(true);
   customPlot.yAxis->grid()->setSubGridVisible(true);
 
-  customPlot.graph(0)->rescaleAxes();
-  customPlot.xAxis->setRangeLower(0.0);
-  customPlot.xAxis->setRangeUpper(customPlot.xAxis->range().upper * 1.1);
+  customPlot.xAxis->setRange(0.0, 6.0);
+  customPlot.yAxis->setRange(0.0, 30.0);
 
-  customPlot.setInteractions(QCP::iRangeDrag | QCP::iRangeZoom |
-                             QCP::iSelectPlottables);
+  QSharedPointer<QCPAxisTickerFixed> xTicker(new QCPAxisTickerFixed);
+  xTicker->setTickStep(1.0);
+  xTicker->setScaleStrategy(QCPAxisTickerFixed::ssMultiples);
+  customPlot.xAxis->setTicker(xTicker);
 
+  QSharedPointer<QCPAxisTickerFixed> yTicker(new QCPAxisTickerFixed);
+  yTicker->setTickStep(5.0);
+  yTicker->setScaleStrategy(QCPAxisTickerFixed::ssMultiples);
+  customPlot.yAxis->setTicker(yTicker);
+
+  customPlot.setWindowTitle("Angle Difference |ψ_d - ψ_g| vs Height");
   customPlot.show();
+
   a.exec();
 }
 
