@@ -2,33 +2,25 @@
 #include "seg_atm_model.h"
 #include <cmath>
 
-double AngleDifferenceCalculator::calculate_d_and_psi_g(double psi_d,
+double Re = 6371000.0;
+double dh = 100.0;
+
+double AngleDifferenceCalculator::calculate_d_and_psi_d(double psi_g,
                                                         double h_s, double h_a,
                                                         double N_s) {
-  double cospsi_g =
-      cos(psi_d) /
-      exp(-(log((Re + h_a) / (Re + h_s)) + integral_hs_ha(h_s, h_a, N_s)));
+  double cospsi_d =
+      cos(psi_g) * (Re + h_s) / (Re + h_a) / exp(integral_hs_ha(h_s, h_a, N_s));
 
-  return std::acos(cospsi_g);
+  return std::acos(cospsi_d);
 }
 
 double AngleDifferenceCalculator::integral_hs_ha(double h_s, double h_a,
                                                  double N_s) {
 
-  double h_curr = h_s;
-  double result = 0;
+  SegAtmModel model(N_s, h_s);
 
-  while (h_curr < h_a) {
-    double step = dh;
-    if ((h_a - h_curr) < step) {
-      step = h_a - h_curr;
-    }
-    SegAtmModel model(N_s, h_curr);
-    double n_max = (model.N_h(h_curr) * 1e-6) + 1;
-    double n_min = (model.N_h(h_curr + step) * 1e-6) + 1;
-    double dn = n_min - n_max;
-    result += (log(n_min / n_max)) * dn;
-    h_curr += step;
-  }
-  return (result);
+  double n_h_a = (model.N_h(h_a) * 1e-6) + 1;
+  double n_h_s = (model.N_h(h_s) * 1e-6) + 1;
+
+  return log(n_h_a / n_h_s);
 }
