@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>gost.csv</file>
+    </qresource>
+</RCC>
