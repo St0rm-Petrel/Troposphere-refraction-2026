@@ -21,9 +21,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    void draw_plot(double r_p, double ha_p, double hs_p);
-    void draw_ray(double x_start, double y_start, double x_end, double y_end);
-    void cout_dir_results(const CalculatedResult &res);
+    void draw_plot(double r_p, double ha_p, double hs_p,
+                   double r_r, double ha_r, double hs_r);
+    void draw_ray(double x_start, double y_start, double x_end, double y_end, QColor color);
+    void draw_point(double x, double y, QColor color);
+    void cout_results(const CalculatedResult &res, const CalculatedResult &res_rev);
 
 private slots:
     void CalculateButton();
