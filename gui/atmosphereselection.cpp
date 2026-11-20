@@ -43,6 +43,43 @@ double AtmosphereSelection::get_N1_seg() const { return ui->N1_seg_input->value(
 double AtmosphereSelection::get_h_gost_1() const { return ui->h_exp_input_1->value(); }
 double AtmosphereSelection::get_h_gost_2() const { return ui->h_exp_input_2->value(); }
 
+// чтение файла для госта
+void AtmosphereSelection::get_gost_table(std::vector<double> &heights,
+                                         std::vector<double> &pressures,
+                                         std::vector<double> &temperatures)
+{
+    QFile file(":/gost.csv");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "Не удалось открыть файл" << file.errorString();
+        return;
+    }
+    QTextStream in(&file);
+    if (!in.atEnd())
+        in.readLine(); // заголовки таблицы
+    while (!in.atEnd())
+    {
+        QString line = in.readLine();
+        QStringList parts = line.split(';'); // разделитель
+
+        // 0-высота
+        // 4-давление
+        // 2-температура (в К)
+        if (parts.size() >= 5)
+        {
+            // перевод в мбар, 1 мбар = 100 Па
+            double h = parts[0].toDouble();
+            double T = parts[2].toDouble();
+            double P_mbar = parts[4].toDouble() / 100.0;
+
+            heights.push_back(h);
+            temperatures.push_back(T);
+            pressures.push_back(P_mbar);
+        }
+    }
+    file.close();
+}
+
 AtmModel *AtmosphereSelection::create_atmospheric_model()
 {
     int index = get_atm_index();
@@ -70,20 +107,22 @@ AtmModel *AtmosphereSelection::create_atmospheric_model()
         return new SegAtmModel(get_Ns_seg(), get_h_seg(), get_N1_seg());
     }
     /*
-    else if (index == 2)
-    {
-        int index_gost = get_gost_index();
-        switch (index_gost)
+        else if (index == 2)
         {
-        case 0:
+            int index_gost = get_gost_index();
+            std::vector<double> heights, pressures, temperatures;
+            get_gost_table(heights, pressures, temperatures);
+            switch (index_gost)
+            {
+            case 0:
 
-            return new GOSTAtmModel(); //аргументы - vector
-        case 1:
+                return new GOSTAtmModel<Linear_interpolation>(heights, pressures, temperatures);
 
-            return new GOSTAtmModel();
+                /*case 1:
+                    return new GOSTAtmModel();
 
-        default:
-            return new GOSTAtmModel();
-        }
-    }*/
+            default:
+                return new GOSTAtmModel<Linear_interpolation>(heights, pressures, temperatures);
+            }
+        }*/
 }
