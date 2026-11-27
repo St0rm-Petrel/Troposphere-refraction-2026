@@ -23,6 +23,8 @@ public:
     RefractionModelWithCurvature() = default;   // конструктор без k
     virtual double K(double h_a, double h_s, double R) = 0;
     CalculatedResult calculate(double h_a, double h_s, double R) override;
+
+    static constexpr double R_e = 6378000;
 };
 
 class RefractionModelK43 : public RefractionModelWithCurvature {
