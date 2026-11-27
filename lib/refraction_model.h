@@ -1,6 +1,8 @@
 #ifndef REFRACTION_MODEL_H
 #define REFRACTION_MODEL_H
 
+#include<exp_atm_model.h>
+
 struct CalculatedResult {
     double d;
     double psi_d;
@@ -42,16 +44,20 @@ public:
 /*
 class RefractionModelAnaliticalType1: public RefractionModelWithCurvature {
 public:
-    RefractionModelAnaliticalType1() {};
+    RefractionModelAnaliticalType1(ExpAtmModel& atmosphere) : atmosphere(atmosphere) {};
     double K(double h_a, double h_s, double R) override;
     CalculatedResult calculate(double h_a, double h_s, double R) override;
+private:
+    ExpAtmModel& atmosphere;
 };
 
 class RefractionModelAnaliticalType2: public RefractionModelWithCurvature {
 public:
-    RefractionModelAnaliticalType2() {};
+    RefractionModelAnaliticalType2(ExpAtmModel& atmosphere) : atmosphere(atmosphere) {};
     double K(double h_a, double h_s, double R) override;
     CalculatedResult calculate(double h_a, double h_s, double R) override;
+private:
+    ExpAtmModel& atmosphere;
 };
 */
 #endif  // REFRACTION_MODEL_H
