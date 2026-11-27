@@ -29,27 +29,27 @@ public:
 
 class RefractionModelK43 : public RefractionModelWithCurvature {
 public:
-    RefractionModelK43();
+    RefractionModelK43() {};
     double K(double h_a, double h_s, double R) override;
 };
 
 class RefractionModelK1 : public RefractionModelWithCurvature {
 public:
-    RefractionModelK1();
+    RefractionModelK1() {};
     double K(double h_a, double h_s, double R) override;
 };
 
 /*
 class RefractionModelAnaliticalType1: public RefractionModelWithCurvature {
 public:
-    RefractionModelAnaliticalType1();
+    RefractionModelAnaliticalType1() {};
     double K(double h_a, double h_s, double R) override;
     CalculatedResult calculate(double h_a, double h_s, double R) override;
 };
 
 class RefractionModelAnaliticalType2: public RefractionModelWithCurvature {
 public:
-    RefractionModelAnaliticalType2();
+    RefractionModelAnaliticalType2() {};
     double K(double h_a, double h_s, double R) override;
     CalculatedResult calculate(double h_a, double h_s, double R) override;
 };

@@ -111,7 +111,4 @@ CalculatedResult RefractionModelAnaliticalType2::calculate(double h_a, double h_
     return answer;
 }
 
-RefractionModelK43::RefractionModelK43() {}
-RefractionModelK1::RefractionModelK1()   {}
-RefractionModelAnaliticalType1::RefractionModelAnaliticalType1() {}
-RefractionModelAnaliticalType2::RefractionModelAnaliticalType2() {}*/
+*/
