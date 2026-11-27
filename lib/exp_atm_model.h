@@ -12,7 +12,6 @@ public:
 
   double H() const noexcept { return H_; }
 
-protected:
   ExpAtmModel(double N_s, double h_s, double H) noexcept
       : N_s_(N_s), h_s_(h_s), H_(H) {}
 
