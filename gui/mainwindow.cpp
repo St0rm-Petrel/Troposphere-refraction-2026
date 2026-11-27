@@ -25,9 +25,6 @@ void MainWindow::CalculateButton()
     double h_s = ui->dir_geom_input->get_h_s();
     double r = ui->dir_geom_input->get_r();
 
-    // параметры атмосферы - пока для экп.модели
-    double H = 12192.0;
-
     Calculate calc;
     RefractionModel *refrModel = ui->dir_refr_sel->create_refraction_model();
     AtmModel *atmModel = ui->dir_atm_sel->create_atmospheric_model();
@@ -39,7 +36,7 @@ void MainWindow::CalculateButton()
     // обратная задача
 
     CalculatedResult res_rev;
-    res_rev.psi_d = res.psi_d + 1.0;
+    res_rev.psi_d = res.psi_d + (3.14 / 180.0);
     res_rev.psi_g = res.psi_g;
     res_rev.d = res.d + 10;
 
