@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
         atmosphereselection.ui
         calculate.cpp 
         calculate.h
+        gost.qrc
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
