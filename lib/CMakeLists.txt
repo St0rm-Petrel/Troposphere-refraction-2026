@@ -16,6 +16,10 @@ set(PROJECT_SOURCES
         refraction_model.cpp
         angle_diff_calculator.h
         angle_diff_calculator.cpp
+        angle_comp_calculator.h
+        angle_comp_calculator.cpp
+        angle_analyt_calculator.h
+        angle_analyt_calculator.cpp
 )
 
 add_library(lib STATIC ${PROJECT_SOURCES})

@@ -1,5 +1,4 @@
-#include "../lib/angle_diff_calculator.h"
-#include "../lib/seg_atm_model.h"
+#include "../lib/angle_comp_calculator.h"
 #include "qcustomplot.h"
 #include <QApplication>
 #include <QColor>
@@ -18,15 +17,7 @@
 
 namespace utf = boost::unit_test;
 
-namespace {
-struct ConcreteAngleCalculator : public AngleDifferenceCalculator {
-  double integral_hs_ha(double h_s, double h_a, double N_s) override {
-    return AngleDifferenceCalculator::integral_hs_ha(h_s, h_a, N_s);
-  }
-};
-} // namespace
-
-BOOST_AUTO_TEST_SUITE(test_angle_diff)
+BOOST_AUTO_TEST_SUITE(test_angle_comp)
 
 #ifdef TEST_PLOTS
 
@@ -61,13 +52,14 @@ BOOST_AUTO_TEST_CASE(plot_angle_diff_vs_height, *utf::label("plot")) {
                                                  Qt::DashLine,  Qt::DashLine,
                                                  Qt::DotLine,   Qt::DotLine};
 
-  ConcreteAngleCalculator calc;
   int graph_idx = 0;
   const double pi = std::acos(-1.0);
 
   for (size_t i = 0; i < Ns_values.size(); ++i) {
     double N_s = Ns_values[i];
     QColor color = colors[i];
+
+    AngleComputationalCalculator calc(N_s, h_s);
 
     for (size_t j = 0; j < psi_g_values_deg.size(); ++j) {
       double psi_g_deg = psi_g_values_deg[j];
@@ -121,7 +113,8 @@ BOOST_AUTO_TEST_CASE(plot_angle_diff_vs_height, *utf::label("plot")) {
   yTicker->setScaleStrategy(QCPAxisTickerFixed::ssMultiples);
   customPlot.yAxis->setTicker(yTicker);
 
-  customPlot.setWindowTitle("Angle Difference |ψ_d - ψ_g| vs Height");
+  customPlot.setWindowTitle(
+      "Angle Difference |ψ_d - ψ_g| vs Height (Computational)");
   customPlot.show();
 
   a.exec();

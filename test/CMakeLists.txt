@@ -11,6 +11,7 @@ set(PROJECT_SOURCES
         exp_model_test.cpp
         linear_interpolation_test.cpp
         angle_calculator_test.cpp
+        angle_analyt_test.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
