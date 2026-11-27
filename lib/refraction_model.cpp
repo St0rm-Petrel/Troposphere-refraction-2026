@@ -14,10 +14,6 @@ CalculatedResult RefractionModelWithoutCurvature::calculate(double h_a, double h
     return answer;
 }
 
-double RefractionModelWithCurvature::K(double h_a, double h_s, double R) {
-    return this->k;
-}
-
 double RefractionModelK43::K(double h_a, double h_s, double R) {
     return 4.0 / 3.0;
 }

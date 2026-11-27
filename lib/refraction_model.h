@@ -19,11 +19,9 @@ public:
 };
 
 class RefractionModelWithCurvature : public RefractionModel {
-protected:
-    double k = 1.0;   // значение по умолчанию, чтобы не было мусора
 public:
     RefractionModelWithCurvature() = default;   // конструктор без k
-    virtual double K(double h_a, double h_s, double R);
+    virtual double K(double h_a, double h_s, double R) = 0;
     CalculatedResult calculate(double h_a, double h_s, double R) override;
 };
 
