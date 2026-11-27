@@ -76,35 +76,4 @@ double RefractionModelAnaliticalType2::K(double h_a, double h_s, double R) {
 
     return part_5;
 }
-
-CalculatedResult RefractionModelAnaliticalType1::calculate(double h_a, double h_s, double R) {
-    k = K(h_a, h_s, R);
-    double sin_psi_d = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_a)))
-                     + R / (2.0 * (k * 6371.0 + h_a));
-    double sin_psi_g = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_s)))
-                     - R / (2.0 * (k * 6371.0 + h_s));
-    double psi_d = asin(sin_psi_d);
-    double psi_g = asin(sin_psi_g);
-    CalculatedResult answer;
-    answer.d = 6371.0 * (psi_d - psi_g);
-    answer.psi_d = psi_d;
-    answer.psi_g = psi_g;
-    return answer;
-}
-
-CalculatedResult RefractionModelAnaliticalType2::calculate(double h_a, double h_s, double R) {
-    k = K(h_a, h_s, R);
-    double sin_psi_d = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_a)))
-                     + R / (2.0 * (k * 6371.0 + h_a));
-    double sin_psi_g = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_s)))
-                     - R / (2.0 * (k * 6371.0 + h_s));
-    double psi_d = asin(sin_psi_d);
-    double psi_g = asin(sin_psi_g);
-    CalculatedResult answer;
-    answer.d = 6371.0 * (psi_d - psi_g);
-    answer.psi_d = psi_d;
-    answer.psi_g = psi_g;
-    return answer;
-}
-
 */
