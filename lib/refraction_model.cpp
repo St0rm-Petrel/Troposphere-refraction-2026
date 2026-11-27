@@ -26,6 +26,7 @@ double RefractionModelK1::K(double h_a, double h_s, double R) {
     return 1.0;
 }
 
+/*
 double RefractionModelAnaliticalType1::K(double h_a, double h_s, double R) {
     double part_1, part_2, part_3, part_4, part_5;
     double N_s, psi_g, H_b, h_b, N_b;
@@ -113,4 +114,4 @@ CalculatedResult RefractionModelAnaliticalType2::calculate(double h_a, double h_
 RefractionModelK43::RefractionModelK43() {}
 RefractionModelK1::RefractionModelK1()   {}
 RefractionModelAnaliticalType1::RefractionModelAnaliticalType1() {}
-RefractionModelAnaliticalType2::RefractionModelAnaliticalType2() {}
+RefractionModelAnaliticalType2::RefractionModelAnaliticalType2() {}*/
