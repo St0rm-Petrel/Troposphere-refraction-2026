@@ -43,18 +43,17 @@ void MainWindow::CalculateButton()
     res_rev.psi_g = res.psi_g;
     res_rev.d = res.d + 10;
 
-    // параметры геометрии (для графика)
-    double x = res_rev.d * std::cos(res_rev.psi_d * M_PI / 180.0);
-    double y = res_rev.d * std::sin(res_rev.psi_d * M_PI / 180.0);
-    double h_s_rev = h_a + y;
-    double r_rev = res_rev.d;
-
     // Calculate calc;
     RefractionModel *refrModelRev = ui->rev_refr_sel->create_refraction_model();
     AtmModel *atmModelRev = ui->rev_atm_sel->create_atmospheric_model();
     // CalculatedResult res = calc.calculate_direct(h_a, h_s, r, refrModel, atmModel);
 
-    draw_plot(r, h_a, h_s, r_rev, h_a, h_s_rev);
+    double R = 6371000; // заглушка! потом вытащить из модели рефракции?
+
+    ui->graph->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    ui->graph->clearItems();
+    draw_plot(h_a, h_s, res.psi_d, res.psi_g, res.d, R, Qt::blue);
+    draw_plot(h_a, h_s, res_rev.psi_d, res_rev.psi_g, res_rev.psi_d, R, Qt::red);
 
     delete refrModelRev;
     delete atmModelRev;
@@ -116,40 +115,34 @@ void MainWindow::draw_point(double x, double y, QColor color)
     point->setBrush(brush);
 }
 
-void MainWindow::draw_plot(double r_p, double ha_p, double hs_p, double r_r, double ha_r, double hs_r)
+void MainWindow::draw_plot(double h_a,
+                           double h_s,
+                           double psi_d,
+                           double psi_g,
+                           double d,
+                           double R,
+                           QColor color)
 {
-    ui->graph->clearItems();
     // получить данные координат
+    double psi_e = psi_d - psi_g;
     double x1 = 0.0;
-    double y1 = ha_p;
-    double dh = (hs_p - ha_p);
-    double dx = std::sqrt(std::abs(r_p * r_p - dh * dh));
-    double x2 = dx;
-    double y2 = hs_p;
-    draw_ray(x1, y1, x2, y2, Qt::red); // луч РЛС прямая
-    draw_ray(x2, y2, x1, y1, Qt::red); // луч цель прямая
+    double y1 = h_a;
+    double x2 = (R + h_s) * sin(psi_e);
+    double y2 = (R + h_s) * cos(psi_e) - R;
+    draw_ray(x1, y1, x2, y2, color); // луч РЛС прямая
+    draw_ray(x2, y2, x1, y1, color); // луч цель прямая
     draw_point(x1, y1, Qt::black);
     draw_point(x2, y2, Qt::black);
 
-    // для обратной пока примерные:
-    double x1_r = x1;
-    double y1_r = y1;
-    double dh_r = (hs_r - ha_r);
-    double dx_r = std::sqrt(std::abs(r_r * r_r - dh_r * dh_r));
-    double x2_r = dx_r;
-    double y2_r = hs_r;
-    draw_ray(x1_r, y1_r, x2_r, y2_r, Qt::blue); // луч РЛС обратная
-    draw_ray(x2_r, y2_r, x1_r, y1_r, Qt::blue); // луч цель обратная
-    draw_point(x2_r, y2_r, Qt::black);
-
     // оси
-    double min_x = std::min({x1, x2, x1_r, x2_r});
-    double max_x = std::max({x1, x2, x1_r, x2_r});
-    double min_y = std::min({y1, y2, y1_r, y2_r});
-    double max_y = std::max({y1, y2, y1_r, y2_r});
+    double min_x = std::min({x1, x2});
+    double max_x = std::max({x1, x2});
+    double min_y = std::min({y1, y2});
+    double max_y = std::max({y1, y2});
     ui->graph->xAxis->setRange(min_x - 100, max_x + 100);
     ui->graph->yAxis->setRange(min_y - 100, max_y + 100);
 
+    ui->graph->rescaleAxes();
     ui->graph->replot();
 }
 
