@@ -37,43 +37,38 @@ double RefractionModelK1::K(double h_a, double h_s, double R) {
     return 1.0;
 }
 
-/*
-double RefractionModelAnaliticalType1::K(double h_a, double h_s, double R) {
-    double part_1, part_2, part_3, part_4, part_5;
-    double N_s, psi_g, H_b, h_b, N_b;
-    N_s = 324.8;
-    h_b = 12192.0;
-    N_b = 66.65;
-    H_b = (h_b - h_s) / std::log(N_s / N_b);
-    double sin_psi_g = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_s)))
-                     - R / (2.0 * (k * 6371.0 + h_s));
-    psi_g = asin(sin_psi_g);
 
-    part_1 = pow(10, -6) * N_s * cos(psi_g) * 6371.0 / H_b;
-    part_2 = (pow(2.718, (h_a - h_s) / H_b) - part_1) / (1 - part_1);
-    part_3 = std::log(part_1);
-    part_4 = H_b / (h_a - h_s) * part_3;
+double RefractionModelAnaliticalType1::K(double h_a, double h_s, double R) {
+    // Get values from atmosphere model
+    double N_s = atmosphere.N_s();
+    double H_b = atmosphere.H();
+    // Get angle from simpler 4/3 model
+    RefractionModelK43 simple_model;
+    double psi_g = simple_model.calculate(h_a, h_s,  R).psi_d;
+
+    // Calculate, 2.38
+    double part_1 = pow(10, -6) * N_s * cos(psi_g) * R_e / H_b;
+    double part_2 = (exp((h_a - h_s) / H_b) - part_1) / (1 - part_1);
+    double part_3 = std::log(part_2);
+    double part_4 = H_b / (h_a - h_s) * part_3;
 
     return part_4;
 }
 
 double RefractionModelAnaliticalType2::K(double h_a, double h_s, double R) {
-    double part_1, part_2, part_3, part_4, part_5;
-    double N_s, psi_g, H_b, h_b, N_b;
-    N_s = 324.8;
-    h_b = 12192.0;
-    N_b = 66.65;
-    H_b = (h_b - h_s) / std::log(N_s / N_b);
-    double sin_psi_g = (h_a - h_s) / R * (1.0 - (h_a - h_s) / (2.0 * (k * 6371.0 + h_s)))
-                     - R / (2.0 * (k * 6371.0 + h_s));
-    psi_g = asin(sin_psi_g);
+    // Get values from atmosphere model
+    double N_s = atmosphere.N_s();
+    double H_b = atmosphere.H();
+    // Get angle from simpler 4/3 model
+    RefractionModelK43 simple_model;
+    double psi_g = simple_model.calculate(h_a, h_s,  R).psi_d;
 
-    part_1 = pow(2.718, (h_a - h_s) / H_b) - 1;
-    part_2 = ((h_a - h_s) / H_b) / part_1;
-    part_3 = pow(10, -6) * N_s * cos(psi_g) * 6371.0 / H_b;
-    part_4 = 1 - part_3 * part_2;
-    part_5 = 1 / part_4;
+    // Calculate, 2.40
+    double part_1 = exp((h_a - h_s) / H_b) - 1;
+    double part_2 = ((h_a - h_s) / H_b) / part_1;
+    double part_3 = pow(10, -6) * N_s * cos(psi_g) * R_e / H_b;
+    double part_4 = 1 - part_3 * part_2;
+    double part_5 = 1 / part_4;
 
     return part_5;
 }
-*/

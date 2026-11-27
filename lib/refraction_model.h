@@ -41,7 +41,6 @@ public:
     double K(double h_a, double h_s, double R) override;
 };
 
-/*
 class RefractionModelAnaliticalType1: public RefractionModelWithCurvature {
 public:
     RefractionModelAnaliticalType1(ExpAtmModel& atmosphere) : atmosphere(atmosphere) {};
@@ -57,5 +56,5 @@ public:
 private:
     ExpAtmModel& atmosphere;
 };
-*/
+
 #endif  // REFRACTION_MODEL_H
